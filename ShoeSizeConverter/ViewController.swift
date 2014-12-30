@@ -13,7 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var enterShoeSizeText: UITextField!
     @IBOutlet weak var convertShoeSizeText: UILabel!
     
-    
+    @IBOutlet weak var enterWomenShoeSizeText: UITextField!
+    @IBOutlet weak var convertedWomenShoeSizeText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +27,22 @@ class ViewController: UIViewController {
     }
     
     @IBAction func convertShoeSizePressed(sender: AnyObject) {
-        let stringShoeSizeText = enterShoeSizeText.text
-        let numShoeSizeText = stringShoeSizeText.toInt()
-        var intShoeSizeText = numShoeSizeText!
-        intShoeSizeText += 30
+        var intShoeSizeText = enterShoeSizeText.text.toInt()!
+        let shoeConvertConstant = 30
         convertShoeSizeText.hidden = false
-        convertShoeSizeText.text = "\(intShoeSizeText)"
+        convertShoeSizeText.text = "\(intShoeSizeText + shoeConvertConstant)"
         enterShoeSizeText.text = ""
         enterShoeSizeText.resignFirstResponder()
     }
+    
+    @IBAction func convertWomenButtonPressed(sender: UIButton) {
+        let numWomenShoeSizeText = Double((enterWomenShoeSizeText.text as NSString).doubleValue)
+        let conversionWomenConstant = 30.5
+        convertedWomenShoeSizeText.hidden = false
+        convertedWomenShoeSizeText.text = "\(numWomenShoeSizeText + conversionWomenConstant)"
+        enterWomenShoeSizeText.text = ""
+        enterWomenShoeSizeText.resignFirstResponder()
+    }
+    
 }
 
